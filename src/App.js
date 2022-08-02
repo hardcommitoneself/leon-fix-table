@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import * as Mui from "@mui/material";
 
-function App() {
+import Row from "./components/ListRow";
+
+import { useDataContext } from "./context/DataContext";
+
+export default function CollapsibleTable() {
+  const { data } = useDataContext();
+
+  console.log(data);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Mui.Container>
+      <Mui.TableContainer sx={{ padding: 5 }}>
+        <Mui.Table aria-label="collapsible table">
+          <Mui.TableHead sx={{ backgroundColor: "#f1f5f9", borderRadius: 5 }}>
+            <Mui.TableRow>
+              <Mui.TableCell />
+              <Mui.TableCell sx={{ fontWeight: 700, color: "#64748b" }}>
+                WAREHOUSE
+              </Mui.TableCell>
+              <Mui.TableCell
+                align="right"
+                sx={{ fontWeight: 700, color: "#64748b" }}
+              >
+                QUANTITY
+              </Mui.TableCell>
+              <Mui.TableCell
+                align="right"
+                sx={{ fontWeight: 700, color: "#64748b" }}
+              >
+                ALLOCATED
+              </Mui.TableCell>
+              <Mui.TableCell
+                align="right"
+                sx={{ fontWeight: 700, color: "#64748b" }}
+              >
+                NOT AVAILABLE
+              </Mui.TableCell>
+              <Mui.TableCell
+                align="right"
+                sx={{ fontWeight: 700, color: "#64748b" }}
+              >
+                ON HAND
+              </Mui.TableCell>
+            </Mui.TableRow>
+          </Mui.TableHead>
+          <Mui.TableBody>
+            {data.map((row, index) => (
+              <Row key={index} id={index} row={row} />
+            ))}
+          </Mui.TableBody>
+        </Mui.Table>
+      </Mui.TableContainer>
+    </Mui.Container>
   );
 }
-
-export default App;
