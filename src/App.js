@@ -2,7 +2,6 @@ import * as React from "react";
 import * as Mui from "@mui/material";
 
 import Row from "./components/ListRow";
-import RoleExpanded from "./components/RoleExpanded";
 
 import { useDataContext } from "./context/DataContext";
 
